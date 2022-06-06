@@ -11,8 +11,12 @@ import java.util.Map;
 
 @Controller
 public class CarController {
-    @Autowired
     private CarService carService;
+
+    @Autowired
+    CarController(CarService carService) {
+        this.carService = carService;
+    }
     @GetMapping(value = "/cars")
     public String printCarsTable(@RequestParam Map<String, String> params, ModelMap model) {
         int count = -1;
